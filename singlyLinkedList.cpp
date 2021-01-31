@@ -18,8 +18,13 @@ void pushNode(int data){
 
 
     Node *node =new Node(data);
-    node->next=head;
-    head=node;
+    if(head==NULL)
+        head=node;
+    else{
+        node->next=head;
+        head=node;
+    }
+
 }
 void insertAfter(int pos, int data){
 
@@ -72,10 +77,10 @@ void revList(){
     //cout<<head->data;
 }
 void printList(){
-
-    while(head!=NULL){
-        cout<<(head->data)<<" ";
-        head=head->next;
+    Node *t = head;
+    while(t!=NULL){
+        cout<<(t->data)<<" ";
+        t=t->next;
     }
 }
 int main(){
@@ -99,10 +104,12 @@ int main(){
     cout<<"Enter element to delete: ";
     cin>>inp;
     deleteNode(inp);
+    cout<<"List: ";
     printList();
     revList();
-    cout<<"Reversed List: "<<printList<<endl;
-
+    cout<<endl;
+    cout<<"Reversed List: ";
+    printList();
 
 
 }
